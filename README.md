@@ -37,7 +37,7 @@ Since the experiment assumes that we only known the outcomes of the actions take
 
 Note that we need to send a batch with all the clients and the respective ads they will be shown in case they access the website/email/etc. Since we are in a batch setting, we cannot invoke an API and retrieve the ad for a certain user. We need to provide all the ad each client will be shown (they might not see it, but we still need to have that information)
 
-The ouput each day is a DataFrame 
+The ouput each day is a DataFrame with the following structure
 
 ```
 client_id	arm_id	      date
@@ -48,4 +48,12 @@ client_id	arm_id	      date
 	4	      9	       2023-03-31
 ```
 
-### Limitations
+where `client_id` is the ID of the client (an integer between $0$ and $99_999$), `arm_id` is the ID of the ad (an integer between $0$ and $9$) and `date` represents the date in which the clients should se their respective ad in case they access the website/email/etc. In the example DataFrame, it corresponds to an attribution of ads to clients made in the day `2023-03-30`, with information until `2023-03-29`, that has effect on the `2023-03-31`.
+
+The ads that will be shown to each client are computed using the TS algorithm based on the clicks made by the clients.
+
+For a particular run, the following results were obtained
+
+    ![Thompson Sampling Output](./images/ts_output.png)
+
+From the plot above, we can see that the ad 9 (which is the one with the highest probability of being clicked) is the most shown ad.
