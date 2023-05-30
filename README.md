@@ -54,6 +54,6 @@ The ads that will be shown to each client are computed using the TS algorithm ba
 
 For a particular run, the following results were obtained
 
-    ![Thompson Sampling Output](./images/ts_output.png)
+   ![Thompson Sampling Output](./images/ts_output.png)
 
 From the plot above, we can see that the ad 9 (which is the one with the highest probability of being clicked) is the most shown ad.
